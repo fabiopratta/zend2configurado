@@ -1,0 +1,62 @@
+<?php
+
+$urlPattern = $_SERVER['REQUEST_URI'];
+
+
+$formatUrl = function ($page) use ($urlPattern){
+    if(!preg_match('/page/', $urlPattern))
+            return $urlPattern.'/page/'. (int) $page;
+    else
+        return preg_replace ('@/page/\d@', '/page/'.(int) $page, $urlPattern);
+};
+?>
+
+<div class="center-block" style="text-align: center; margin-left: auto; margin-right: auto;">
+<?php if ($this->pageCount): ?>
+        <ul class="pagination pagination-centered pagination-sm">
+            <!-- Previous page link -->
+            <?php if (isset($this->previous)): ?>
+                <li>
+                    <a href="<?php echo $formatUrl($this->previous); ?>">
+                        <<
+                    </a>
+                </li>
+            <?php else: ?>
+                <li class="disabled">
+                    <a href="#">
+                        <<
+                    </a>
+                </li>
+            <?php endif; ?>
+            <!-- Numbered page links -->
+            <?php foreach ($this->pagesInRange as $page): ?>
+                <?php if ($page != $this->current): ?>
+                    <li>
+                        <a href="<?php echo $formatUrl($page); ?>">
+                            <?php echo $page; ?>
+                        </a>
+                    </li>
+                <?php else: ?>
+                    <li class="active">
+                        <a href="#"><?php echo $page; ?></a>
+                    </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+            <!-- Next page link -->
+            <?php if (isset($this->next)): ?>
+                <li>
+                    <a href="<?php echo $formatUrl($this->next); ?>">
+                        >>
+                    </a>
+                </li>
+            <?php else: ?>
+                <li class="disabled">
+                    <a href="#">
+                        >>
+                    </a>
+                </li>
+            <?php endif; ?>
+        </ul>
+<?php endif; ?>
+</div>

@@ -10,6 +10,9 @@ if (php_sapi_name() === 'cli-server' && is_file(__DIR__ . parse_url($_SERVER['RE
     return false;
 }
 
+//Zend Developes Tools
+define('REQUEST_MICROTIME', microtime(true));
+
 // Setup autoloading
 require 'init_autoloader.php';
 

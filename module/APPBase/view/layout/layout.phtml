@@ -1,0 +1,87 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('CEUControl - Controle Fundação CEU')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/faviconnew.ico'))
+                ->prependStylesheet($this->basePath() . '/css/style.css?'.  uniqid())
+                ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+                ->prependStylesheet($this->basePath() . '/css/bootstrap.css')
+                ->prependStylesheet($this->basePath() . '/css/bootstrap-datetimepicker.min.css')
+                 ->prependStylesheet($this->basePath() . '/css/jasny-bootstrap.min.css')
+                ->prependStylesheet($this->basePath() . '/css/ui-lightness/jquery-ui-1.10.4.custom.min.css')
+        ?>
+
+        <!-- Scripts -->
+        <?php
+        echo $this->headScript()
+                ->prependFile($this->basePath() . '/js/ui/jquery.ui.autocomplete.js')
+                 ->prependFile($this->basePath() . '/js/jquery-ui-1.10.4.custom.min.js')
+                ->prependFile($this->basePath() . '/js/locales/bootstrap-datepicker.pt-BR.js')
+                ->prependFile($this->basePath() . '/js/bootstrap-datepicker.js')
+                ->prependFile($this->basePath() . '/js/jasny-bootstrap.min.js')
+                ->prependFile($this->basePath() . '/js/moment.js')
+                ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                ->prependFile($this->basePath() . '/js/jquery-1.10.2.js')
+                ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+        ;
+        ?>
+
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/logo-domo-ciencia-home.png') ?>" alt="Domo Ciência"/>&nbsp;Domo Ciência</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo 'Home' ?></a></li>
+                        <?php if ($this->UserIdentity("APPUser")): ?>
+                            <li class="active"><a href="<?php echo $this->url('appuser-admin') ?>"><?php echo 'Vendedores' ?></a></li>
+                            <li class="active"><a href="<?php echo $this->url('estruturas-admin') ?>"><?php echo 'Estruturas' ?></a></li>
+                            <li class="active"><a href="<?php echo $this->url('valores-admin') ?>"><?php echo 'Valores' ?></a></li>
+                            <li class="active"><a href="<?php echo $this->url('clientes-admin') ?>"><?php echo 'Clientes' ?></a></li>
+                            <?php 
+                            $data = new \DateTime("now");
+                            $day = $data->format("d");
+                            $month = $data->format("m");
+                            $year = $data->format("Y");
+                            ?>
+                            <li class="active"><a href="<?php echo $this->url('agendamento-admin/dataset',array('controller'=>'agendamento','action'=>'index','day'=>00,'month'=>$month,'year'=>$year)) ?>"><?php echo 'Agendamento' ?></a></li>
+                            <li class="active"><a href="<?php echo $this->url('appuser-logout') ?>"><?php echo 'Logout' ?></a></li>
+                        <?php endif; ?>
+
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <br/>
+        <div class="container">
+            <?php echo $this->content; ?>
+            <hr>
+            <footer>
+                <a href="http://www.fabiopratta.com.br/">
+                    <img src="http://www.fabiopratta.com.br/logo_copy.png" alt="Fabio Pratta WebSites e Sistemas" title="Fabio Pratta WebSites e Sistemas"/>
+                </a>  
+            </footer>
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

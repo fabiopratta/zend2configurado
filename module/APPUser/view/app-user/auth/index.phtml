@@ -1,0 +1,42 @@
+<?php if ($this->error): ?>
+    <div class="alert alert-danger">Usuario ou senha Invalidos</div>
+<?php endif; ?>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('appuser-auth'));
+$form->prepare();
+?>
+
+<?php echo $this->form()->openTag($form); ?>
+<fieldset>
+
+    <!-- Form Name -->
+    <legend>Login</legend>
+
+    <!-- Email-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput">Email</label>  
+        <div class="col-md-4">
+            <?php echo $this->formRow($form->get('email')); ?>
+        </div>
+    </div>
+
+    <!-- Email-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput">Password</label>  
+        <div class="col-md-4">
+            <?php echo $this->formRow($form->get('password')); ?>
+        </div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="singlebutton"></label>
+        <div class="col-md-4">
+            <?php echo $this->formSubmit($form->get('submit')); ?>
+        </div>
+    </div>
+
+</fieldset>
+<?php echo $this->form()->closeTag(); ?>
+

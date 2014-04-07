@@ -1,0 +1,65 @@
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('appuser-admin/default', array('controller' => 'vendedores', 'action' => 'edit')));
+$form->prepare();
+?>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4>
+            <strong>Editar Vendedor</strong>
+            <a class="btn btn-warning navbar-right" href="<?php echo $this->url("appuser-admin"); ?>">Voltar</a> 
+        </h4>
+    </div>
+
+    <div class="panel-body">
+        <?php echo $this->form()->openTag($form); ?>
+        <fieldset>
+            <!-- ID -->
+            <?php echo $this->formHidden($form->get('id')); ?>
+            <!-- Nome-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Nome</label>  
+                <div class="col-md-4">
+                    <?php echo $this->formRow($form->get('nome')); ?>
+                </div>
+            </div>
+
+            <!-- Email-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Email</label>  
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <?php echo $this->formRow($form->get('email')); ?>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Password-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Password</label>  
+                <div class="col-md-4">
+                    <?php echo $this->formRow($form->get('password')); ?>
+                </div>
+            </div>
+
+            <!-- Redigite-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Redigite</label>  
+                <div class="col-md-4">
+                    <?php echo $this->formRow($form->get('confirmation')); ?>
+                </div>
+            </div>
+            <?php echo $this->formRow($form->get('security')); ?>
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="singlebutton"></label>
+                <div class="col-md-4">
+                    <?php echo $this->formSubmit($form->get('submit')); ?>
+                </div>
+            </div>
+
+        </fieldset>
+        <?php echo $this->form()->closeTag(); ?>
+    </div>
+</div>

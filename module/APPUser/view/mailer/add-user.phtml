@@ -1,0 +1,6 @@
+Olá <?php echo $this->nome; ?>
+<br/><br/>
+<p>
+    Para Ativar seu usuario acesse a seguinte url:
+    <a href="http://agendamento.intranet.local<?php echo $this->url("appuser-activate",array('key'=>$this->activationKey));?>">http://agendamento.intranet.local<?php echo $this->url("appuser-activate",array('key'=>$this->activationKey)); ?></a>
+</p>

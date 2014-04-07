@@ -9,6 +9,11 @@
     "homepage": "http://framework.zend.com/",
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "2.3.*"
+        "zendframework/zendframework": "2.3.*",
+        "doctrine/doctrine-orm-module": "*",
+        "hounddog/doctrine-data-fixture-module": "dev-master",
+        "zendframework/zftool": "dev-master",
+        "firephp/firephp-core": "dev-master",
+        "zendframework/zend-developer-tools": "dev-master"
     }
 }
